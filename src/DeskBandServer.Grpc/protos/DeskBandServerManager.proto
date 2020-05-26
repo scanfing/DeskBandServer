@@ -1,0 +1,75 @@
+//指定protobuf语法版本
+syntax = "proto3";
+import "ServerInfrastructure.proto";
+package DeskBandServer.Grpc;
+
+//DeskBand服务
+service DeskBandServiceManager {
+	//获取样式配置
+	rpc GetStyle (GetStyleRequest) returns (GetStyleReply);
+	
+	rpc ConfigMsgServer (ConfigMsgServerRequest) returns (ConfigMsgServerReply);
+
+	//设置样式配置
+	rpc SetStyle (SetStyleRequest) returns (SetStyleReply);
+	//启动Grpc消息服务
+	rpc StartGrpcMsgService(StartGrpcMsgServiceRequest) returns (StartGrpcMsgServiceReply);
+	//停止Grpc消息服务
+	rpc StopGrpcMsgService(StopGrpcMsgServiceRequest) returns (StopGrpcMsgServiceReply);
+}
+
+message ConfigMsgServerRequest {
+	// Grpc 服务端口
+    int32 ServerPort = 1;
+	// 只接受本机的消息
+    bool OnlyAcceptLocalhost = 2;
+    // 启动时默认显示的内容
+	string DefaultContent = 3;       
+}
+
+message ConfigMsgServerReply {
+
+}
+
+message GetStyleRequest {
+
+}
+
+message GetStyleReply{
+	CustomColor Background = 1;
+	CustomColor BorderColor = 2;
+	uint32 BorderThickness = 3;
+	uint32 CornerRadius = 4;
+	uint32 FontSize = 5;
+    CustomColor Foreground = 6;
+}
+
+message SetStyleRequest {
+	CustomColor Background = 1;
+	CustomColor BorderColor = 2;
+	uint32 BorderThickness = 3;
+	uint32 CornerRadius = 4;
+	uint32 FontSize = 5;
+    CustomColor Foreground = 6;
+}
+
+message SetStyleReply {
+	bool success = 1;
+	string ErrorMsg = 2;
+}
+
+message StartGrpcMsgServiceRequest {
+
+}
+
+message StartGrpcMsgServiceReply {
+	int32 GrpcMsgPort = 1;
+}
+
+message StopGrpcMsgServiceRequest {
+
+}
+
+message StopGrpcMsgServiceReply {
+	int32 GrpcMsgPort = 1;
+}
