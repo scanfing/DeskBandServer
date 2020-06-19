@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DeskBandServer.Grpc.Controls"
+                    xmlns:models="clr-namespace:DeskBandServer.Grpc.Models">
+    <DataTemplate x:Key="TextMessageTemplate" DataType="{x:Type models:TextMessageModel}">
+        <TextBlock VerticalAlignment="Center"
+                   FontSize="{Binding Path=FontSize}"
+                   Foreground="{Binding Path=Foreground}"
+                   Text="{Binding Path=Content}"
+                   TextAlignment="Center"
+                   TextWrapping="WrapWithOverflow" />
+    </DataTemplate>
+</ResourceDictionary>

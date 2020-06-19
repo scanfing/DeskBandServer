@@ -1,0 +1,36 @@
+﻿<wpf:CSDeskBandWpf x:Class="DeskBandServer.Grpc.GrpcDeskBandView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:controls="clr-namespace:DeskBandServer.Grpc.Controls"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:local="clr-namespace:DeskBandServer.Grpc"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:wpf="clr-namespace:CSDeskBand.Wpf;assembly=CSDeskBand.Wpf"
+                   MaxHeight="50"
+                   HorizontalAlignment="Stretch"
+                   d:DesignHeight="40"
+                   d:DesignWidth="150"
+                   Background="Transparent"
+                   FontSize="{Binding Path=FontSize}"
+                   Foreground="{Binding Path=Foreground}"
+                   mc:Ignorable="d">
+    <wpf:CSDeskBandWpf.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Controls/DataTemplates.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <controls:MessageTemplateSelector x:Key="MsgTemplateSelector" TextMessage="{StaticResource TextMessageTemplate}" />
+        </ResourceDictionary>
+    </wpf:CSDeskBandWpf.Resources>
+    <Grid>
+        <Border x:Name="Border_Container"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="{Binding Path=Background}"
+                BorderBrush="{Binding Path=BorderBrush}"
+                BorderThickness="{Binding Path=BorderThickness}"
+                CornerRadius="{Binding Path=CornerRadius}">
+            <ContentControl Content="{Binding Path=MsgModel}" ContentTemplateSelector="{StaticResource MsgTemplateSelector}" />
+        </Border>
+    </Grid>
+</wpf:CSDeskBandWpf>

@@ -1,0 +1,31 @@
+//指定protobuf语法版本
+syntax = "proto3";
+import "ServerInfrastructure.proto";
+package DeskBandServer.Grpc;
+
+//DeskBand服务
+service DeskBandService {
+	//获取DeskBand区域大小
+	rpc GetSize (GetSizeRequest) returns (GetSizeReply);
+	//在DeskBand区域内显示文本内容
+	rpc ShowTextMessage (ShowTextMessageRequest) returns (ShowTextMessageReply);
+}
+
+message GetSizeRequest {
+
+}
+
+message GetSizeReply{
+	int32 Width = 1;
+	int32 Height = 2; 
+}
+
+message ShowTextMessageRequest {
+    string MsgID = 1;
+	string Content = 2;
+	CustomColor Foreground = 3; 
+}
+
+message ShowTextMessageReply {
+	string MsgID = 1;
+}

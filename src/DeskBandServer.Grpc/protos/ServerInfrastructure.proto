@@ -1,0 +1,11 @@
+//指定protobuf语法版本
+syntax = "proto3";
+package DeskBandServer.Grpc;
+
+//自定义ARGB颜色结构
+message CustomColor {
+	uint32 A = 1;
+	uint32 R = 2;
+	uint32 G = 3;
+	uint32 B = 4;
+}
