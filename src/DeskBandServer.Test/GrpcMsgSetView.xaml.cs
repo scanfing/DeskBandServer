@@ -32,7 +32,7 @@ namespace DeskBandServer.Test
         {
             if (int.TryParse(Txt_Port.Text, out var port))
             {
-                _channel = new Channel("127.0.0.1", port, ChannelCredentials.Insecure);
+                _channel = new Channel(Txt_IP.Text, port, ChannelCredentials.Insecure);
                 _client = new DeskBandService.DeskBandServiceClient(_channel);
                 Btn_Connect.IsEnabled = false;
                 Btn_DisConnect.IsEnabled = true;
